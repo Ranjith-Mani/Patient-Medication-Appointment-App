@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.w3.org/1999/xhtml" lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Patient Appointment Details</title>
+
+    <!-- Include Bootstrap CSS -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+
+    <!-- Internal CSS -->
+    <style>
+        body {
+            background-color: #f8f9fa; /* Light background for better contrast */
+        }
+
+        .card {
+            max-width: 600px;
+            margin: 0 auto; /* Center the card */
+        }
+    </style>
+</head>
+
+<body>
+<div class="container mt-5">
+    <h1 class="text-center mb-4">Patient Appointment Details</h1>
+    <div class="card">
+        <div class="card-body text-center"> <!-- Add text-center class to center the content -->
+            <h5 class="card-title">Appointment's Information</h5>
+            <p class="card-text">
+                <strong>Appointment Date:</strong> <span th:text="${appointment.date}"></span><br>
+                <strong>Appointment Time:</strong> <span th:text="${appointment.time}"></span><br>
+                <strong>Doctor:</strong> <span th:text="${appointment.doctor.firstName} + ' ' + ${appointment.doctor.lastName}"></span><br>
+                <strong>Patient:</strong> <span th:text="${appointment.patient.firstName} + ' ' + ${appointment.patient.lastName}"></span><br>
+                <strong>Reason:</strong> <span th:text="${appointment.reason}"></span>
+            </p>
+        </div>
+    </div>
+    <div class="text-center mt-4">
+        <a th:href="@{/patient-appointments}" class="btn btn-primary">Back to Appointment List</a>
+    </div>
+</div>
+
+<!-- Optional: Include Bootstrap JS and dependencies (for features like dropdowns) -->
+<script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.6/dist/umd/popper.min.js"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+
+</body>
+
+</html>

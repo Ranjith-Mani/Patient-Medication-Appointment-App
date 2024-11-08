@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" lang="en">
+
+<head>
+    <title>Doctor Medications</title>
+    <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
+</head>
+
+<body>
+
+<div class="container mt-5">
+    <h2>Doctor Medications</h2>
+
+    <!-- Back to Home Button -->
+    <div class="mb-3">
+        <a th:href="@{/doctors-home}" class="btn btn-secondary">Back to Doctor's Home</a>
+    </div>
+
+    <!-- Button to add new medication -->
+    <div class="mb-3">
+        <a href="/doctor-medications/add" class="btn btn-primary">Add Medication</a>
+    </div>
+
+    <!-- Medication List Table -->
+    <table class="table table-striped table-bordered">
+        <thead>
+        <tr>
+            <th>Medication Name</th>
+            <th>Frequency</th>
+            <th>Dosage</th>
+            <th>Doctor</th>
+            <th>Patient</th>
+            <th>Actions</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr th:each="medication : ${medications}">
+            <td th:text="${medication.name}"></td>
+            <td th:text="${medication.frequency}"></td>
+            <td th:text="${medication.dosage}"></td>
+            <td th:text="${medication.doctor.firstName} + ' ' + ${medication.doctor.lastName}"></td>
+            <td th:text="${medication.patient.firstName} + ' ' + ${medication.patient.lastName}"></td>
+            <td>
+                <!-- View details button -->
+                <a th:href="@{/doctor-medications/details/{id}(id=${medication.id})}" class="btn btn-info btn-sm">View</a>
+
+                <!-- Edit button -->
+                <a th:href="@{/doctor-medications/edit/{id}(id=${medication.id})}" class="btn btn-warning btn-sm">Update</a>
+
+                <!-- Delete button -->
+                <form th:action="@{/doctor-medications/delete/{id}(id=${medication.id})}" method="post" style="display:inline;">
+                    <button type="submit" class="btn btn-danger btn-sm">Delete</button>
+                </form>
+            </td>
+        </tr>
+        </tbody>
+    </table>
+</div>
+
+<script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.3/dist/umd/popper.min.js"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+
+</body>
+
+</html>

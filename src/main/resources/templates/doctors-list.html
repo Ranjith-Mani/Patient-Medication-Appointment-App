@@ -1,0 +1,75 @@
+<!doctype html>
+<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Doctor's List</title>
+
+    <!-- Include Bootstrap CSS -->
+    <link
+            href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css"
+            rel="stylesheet"
+            integrity="sha384-GLhlTQ8iRABdZLl6O3oVMWSktQOp6b7In1Zl3/Jr59b6EGGoI1aFkw7cmDA6j6gD"
+            crossorigin="anonymous">
+</head>
+
+<body>
+
+<div class="container mt-5">
+    <h2 class="text-center">Doctor's Records Management System</h2>
+
+    <!-- Back to Home Button -->
+    <div class="mb-3">
+        <a th:href="@{/doctors-home}" class="btn btn-secondary">Back to Doctor's Home</a> <!-- Update the URL if needed -->
+    </div>
+
+    <!-- Add Doctor Button -->
+    <a th:href="@{/doctors/add}" class="btn btn-primary mb-3">Add Doctor</a> <!-- URL to match controller -->
+
+    <!-- Doctor's Records Table -->
+    <table class="table table-bordered">
+        <thead class="thead-light">
+        <tr>
+            <th scope="col">Doctor Id</th>
+            <th scope="col">First Name</th>
+            <th scope="col">Last Name</th>
+            <th scope="col">Email</th>
+            <th scope="col">Phone Number</th>
+            <th scope="col">Specialization</th>
+            <th scope="col">Hospital</th>
+            <th scope="col">Address</th>
+            <th scope="col">Action</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr th:each="doctor : ${doctors}">
+            <td th:text="${doctor.id}"></td>
+            <td th:text="${doctor.firstName}"></td>
+            <td th:text="${doctor.lastName}"></td>
+            <td th:text="${doctor.email}"></td>
+            <td th:text="${doctor.phoneNumber}"></td>
+            <td th:text="${doctor.specialization}"></td>
+            <td th:text="${doctor.hospital}"></td>
+            <td th:text="${doctor.address}"></td>
+            <td>
+                <!-- Action Buttons -->
+                <a th:href="@{/doctors/details/{id}(id=${doctor.id})}" class="btn btn-warning" aria-label="View Doctor Details">View</a>
+                <a th:href="@{/doctors/update/{id}(id=${doctor.id})}" class="btn btn-primary" aria-label="Update Doctor">Update</a>
+                <form th:action="@{/doctors/delete/{id}(id=${doctor.id})}" method="post" style="display:inline;">
+                    <button type="submit" class="btn btn-danger" aria-label="Delete Doctor">Delete</button>
+                </form>
+            </td>
+        </tr>
+        </tbody>
+    </table>
+</div>
+
+<!-- To link JavaScript with Bootstrap design -->
+<script
+        src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-w76AqPfDkMBDXo30jS1Sgez6pr3x5MlQ1ZAGC+nuZB+EYdgRZgiwxhTBTkF7CXvN"
+        crossorigin="anonymous">
+</script>
+
+</body>
+</html>

@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.w3.org/1999/xhtml" lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Doctor Details</title>
+
+    <!-- Include Bootstrap CSS -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+
+    <!-- Internal CSS -->
+    <style>
+        body {
+            background-color: #f8f9fa; /* Light background for better contrast */
+        }
+
+        .card-body {
+            text-align: center; /* Center-align text inside the card */
+        }
+    </style>
+
+</head>
+
+<body>
+<div class="container mt-5">
+    <h1 class="text-center mb-4">Doctor Details</h1>
+
+    <!-- Card for displaying doctor information -->
+    <div class="card mx-auto" style="max-width: 600px;"> <!-- Center the card -->
+        <div class="card-body">
+            <h5 class="card-title">Doctor's Information</h5>
+            <p class="card-text">
+                <strong>First Name:</strong> <span th:text="${doctor.firstName}"></span><br>
+                <strong>Last Name:</strong> <span th:text="${doctor.lastName}"></span><br>
+                <strong>Email:</strong> <span th:text="${doctor.email}"></span><br>
+                <strong>Phone Number:</strong> <span th:text="${doctor.phoneNumber}"></span><br>
+                <strong>Specialization:</strong> <span th:text="${doctor.specialization}"></span><br>
+                <strong>Hospital:</strong> <span th:text="${doctor.hospital}"></span><br>
+                <strong>Address:</strong> <span th:text="${doctor.address}"></span>
+            </p>
+        </div>
+    </div>
+
+    <!-- Back button -->
+    <div class="text-center mt-4">
+        <a th:href="@{/doctors}" class="btn btn-primary">Back to Doctor's List</a>
+    </div>
+</div>
+
+<!-- Optional: Include Bootstrap JS and dependencies (for features like dropdowns) -->
+<script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.6/dist/umd/popper.min.js"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+
+</body>
+</html>
