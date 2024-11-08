@@ -1,0 +1,5 @@
+PATEIENT MEDICATION AND APPOINTMENT MANAGEMENT APPLICATION ENDPOINTS:
+
+FOR LOCAL-HOST : http://localhost:8080/home
+
+FOR SWAGGER : http://localhost:8080/swagger-ui/index.html
